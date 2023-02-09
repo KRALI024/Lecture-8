@@ -1,4 +1,4 @@
-# Lecture 8: 3D Graphics Programming (Part 2)
+# Lecture 8: 3D Graphics Programming (Part 1)
 
 You can run the program on [GitHub pages](https://csci-4611-spring-2023.github.io/Lecture-8).
 
@@ -7,13 +7,6 @@ The latest commit is the finished code that was pushed at the end of class.  If 
 ## Prerequisites
 
 To work with this code, you will first need to install [Node.js 18.13.0 LTS](https://nodejs.org/en/) (or newer) and [Visual Studio Code](https://code.visualstudio.com/). 
-
-I also recommend you install the following useful VS Code extensions:
-
-- [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) (makes source control easier)
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) (static code analysis tool that can flag errors)
-- [JavaScript Debugger](https://marketplace.visualstudio.com/items?itemName=ms-vscode.js-debug-nightly) (essential for real-time debugging)
-- [WebGL GLSL Editor](https://marketplace.visualstudio.com/items?itemName=raczzalan.webgl-glsl-editor) (used for programming shaders later in the course)
 
 ## Running
 
