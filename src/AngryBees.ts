@@ -10,6 +10,7 @@ export class AngryBees extends gfx.GfxApp
 {
     private ground: gfx.BoxMesh;
     private skybox: gfx.BoxMesh;
+    private bee: gfx.Transform3;
 
     constructor()
     {
@@ -17,6 +18,7 @@ export class AngryBees extends gfx.GfxApp
 
         this.ground = new gfx.BoxMesh();
         this.skybox = new gfx.BoxMesh();
+        this.bee = new gfx.Transform3();
     }
 
     createScene(): void 
@@ -42,10 +44,42 @@ export class AngryBees extends gfx.GfxApp
         this.skybox.material.setColor(new gfx.Color(0.698, 1, 1));
         this.skybox.material.side = gfx.Side.BACK;
 
+        const beeBody = new gfx.SphereMesh(1, 2);
+        beeBody.scale.set(0.5, 0.5, 0.8);
+        beeBody.rotation.setRotationX(Math.PI / 4);
+        this.bee.add(beeBody);
+
+        const beeHead = new gfx.SphereMesh(1, 2);
+        beeHead.position.set(0, 0.6, -0.6);
+        beeHead.scale.set(0.4, 0.4, 0.4);
+        this.bee.add(beeHead);
+
+        const beeWing = new gfx.SphereMesh(1, 2);
+        beeWing.scale.set(0.2, 0.05, 0.8);
+        beeWing.material = new gfx.UnlitMaterial();
+        beeWing.material.setColor(gfx.Color.WHITE);
+
+        const beeWingLeft = new gfx.MeshInstance(beeWing);
+        beeWingLeft.position.set(-0.55, 0.56, .5);
+        beeWingLeft.rotateY(-Math.PI/8);
+        beeWingLeft.rotateZ(Math.PI/8);
+        this.bee.add(beeWingLeft);
+
+        const beeWingRight = new gfx.MeshInstance(beeWing);
+        beeWingRight.position.set(0.55, 0.56, .5);
+        beeWingRight.rotateY(Math.PI/8);
+        beeWingRight.rotateZ(-Math.PI/8);
+        this.bee.add(beeWingRight);
+
+        this.bee.position.set(0, 0.5, -5);
+        this.bee.rotation.setRotationY(-Math.PI/2);
+        this.bee.scale.set(0.25, 0.25, 0.25);
+
         this.scene.add(ambientLight);
         this.scene.add(directionalLight);
         this.scene.add(this.ground);
         this.scene.add(this.skybox);
+        this.scene.add(this.bee);
     }
 
     update(deltaTime: number): void 
