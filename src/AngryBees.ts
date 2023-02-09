@@ -12,6 +12,8 @@ export class AngryBees extends gfx.GfxApp
     private skybox: gfx.BoxMesh;
     private bee: gfx.Transform3;
 
+    private beeVelocity: gfx.Vector3;
+
     constructor()
     {
         super();
@@ -19,6 +21,8 @@ export class AngryBees extends gfx.GfxApp
         this.ground = new gfx.BoxMesh();
         this.skybox = new gfx.BoxMesh();
         this.bee = new gfx.Transform3();
+
+        this.beeVelocity = new gfx.Vector3();
     }
 
     createScene(): void 
@@ -73,7 +77,7 @@ export class AngryBees extends gfx.GfxApp
         beeWingRight.rotateZ(-Math.PI/8);
         this.bee.add(beeWingRight);
 
-        this.bee.position.set(0, 0.5, -5);
+        this.bee.position.set(-3.5, 0.5, -5);
         this.bee.rotation.setRotationY(-Math.PI/2);
         this.bee.scale.set(0.25, 0.25, 0.25);
 
@@ -86,6 +90,12 @@ export class AngryBees extends gfx.GfxApp
 
     update(deltaTime: number): void 
     {
+        const a = new gfx.Vector3(1, 0.5, 0);
 
+        // v' = v + a * dt
+        this.beeVelocity.add(gfx.Vector3.multiplyScalar(a, deltaTime));
+
+        // p' = p + v' * dt
+        this.bee.position.add(gfx.Vector3.multiplyScalar(this.beeVelocity, deltaTime));
     }
 }
