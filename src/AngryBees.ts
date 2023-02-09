@@ -9,12 +9,14 @@ import * as gfx from 'gophergfx'
 export class AngryBees extends gfx.GfxApp
 {
     private ground: gfx.BoxMesh;
+    private skybox: gfx.BoxMesh;
 
     constructor()
     {
         super();
 
         this.ground = new gfx.BoxMesh();
+        this.skybox = new gfx.BoxMesh();
     }
 
     createScene(): void 
@@ -33,10 +35,17 @@ export class AngryBees extends gfx.GfxApp
 
         this.ground.position.set(0, -0.5, 0);
         this.ground.scale.set(50, 1, 50);
+        this.ground.material.setColor(new gfx.Color(83/255, 209/255, 110/255));
+
+        this.skybox.scale.set(100, 100, 100);
+        this.skybox.material = new gfx.UnlitMaterial();
+        this.skybox.material.setColor(new gfx.Color(0.698, 1, 1));
+        this.skybox.material.side = gfx.Side.BACK;
 
         this.scene.add(ambientLight);
         this.scene.add(directionalLight);
         this.scene.add(this.ground);
+        this.scene.add(this.skybox);
     }
 
     update(deltaTime: number): void 
