@@ -47,11 +47,13 @@ export class AngryBees extends gfx.GfxApp
         const beeBody = new gfx.SphereMesh(1, 2);
         beeBody.scale.set(0.5, 0.5, 0.8);
         beeBody.rotation.setRotationX(Math.PI / 4);
+        beeBody.material.setColor(new gfx.Color(1, 0.82, 0));
         this.bee.add(beeBody);
 
         const beeHead = new gfx.SphereMesh(1, 2);
         beeHead.position.set(0, 0.6, -0.6);
         beeHead.scale.set(0.4, 0.4, 0.4);
+        beeHead.material.setColor(new gfx.Color(1, 0.82, 0));
         this.bee.add(beeHead);
 
         const beeWing = new gfx.SphereMesh(1, 2);
